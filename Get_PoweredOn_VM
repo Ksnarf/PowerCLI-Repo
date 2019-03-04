@@ -1,0 +1,1 @@
+Get-VM | Where-Object {$_.powerstate -eq ‘PoweredOn’} | Shutdown-VMGuest -Confirm:$false
