@@ -1,0 +1,41 @@
+Connect-VIServer -Server hostname.example.com
+#
+$VMPowerDown = Get-VMHost 'eXXX-g-esxixxx.airbnb.biz' | Get-VM | Where-Object {$_.powerstate -eq ‘PoweredOn’} | Shutdown-VMGuest -Confirm:$false 
+$VMPowerDownForce = Get-VM | Where-Object {$_.powerstate -eq ‘PoweredOn’} | Stop-VM -Confirm:$false
+$HostTask1 = " "
+$HostTask2 = " "
+$HostTask3 = " "
+
+
+
+
+VMPowerDown
+Start-Sleep -s 300
+Wait-Task -task $VMPowerDown
+VMPowerDownForce 
+Start-Sleep -s 180
+Get-VM | Where-Object {$_.powerstate -eq ‘PoweredOn’} 
+Set-VMHost -VMHost $ESXHost -State "Maintenance" -RunAsync
+HostTask1
+Start-Sleep -s 60
+HostTask2
+Start-Sleep -s 60
+HostTask3
+Start-Sleep -s 120
+Restart-VMHost $ESXHost -RunAsync -Force
+
+# Start-Sleep -s 900
+Set-VMHost -VMHost $ESXHost -State 'Ready' -RunAsync
+
+end
+
+
+
+
+
+
+
+
+
+
+
