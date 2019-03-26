@@ -1,6 +1,6 @@
 Connect-VIServer -Server hostname.example.com
 #
-$VMPowerDown = Get-VMHost 'eXXX-g-esxixxx.airbnb.biz' | Get-VM | Where-Object {$_.powerstate -eq ‘PoweredOn’} | Shutdown-VMGuest -Confirm:$false 
+$VMPowerDown = Get-VMHost 'esxi01.example.com' | Get-VM | Where-Object {$_.powerstate -eq ‘PoweredOn’} | Shutdown-VMGuest -Confirm:$false 
 $VMPowerDownForce = Get-VM | Where-Object {$_.powerstate -eq ‘PoweredOn’} | Stop-VM -Confirm:$false
 $HostTask1 = " "
 $HostTask2 = " "
