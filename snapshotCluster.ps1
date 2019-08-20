@@ -4,12 +4,9 @@
 $cred = Get-VICredentialStoreItem -file "C:\Temp\RoWESXCred.xml"
 
 #Update this with whatever vCente rou are trying to access. 
-#Sunnyvale = esv1-g-vc01.airbnb.biz
-#Virginia = eva1-g-vc01.airbnb.biz
-#London = edn1-g-vc01.airbnb.biz
-#Singapore = esg3-g-vc01.airbnb.biz
 
-$vc = "esv1-g-vc01.airbnb.biz"
+
+$vc = "esv1-g-vc01.contsco.biz"
 
 Connect-VIServer -Server $vc -User $cred.User -Password $cred.Password
 
